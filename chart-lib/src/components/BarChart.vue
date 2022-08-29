@@ -1,14 +1,12 @@
 <template>
-    <canvas id="myChart" width="400" height="400"></canvas>
+  <canvas ref="barChart" id="myChart2" width="400" height="400"></canvas>
 </template>
 
 <script>
-import { Chart, registerables } from "chart.js";
-Chart.register(...registerables);
 export default {
   mounted() {
-    const ctx = document.getElementById("myChart").getContext("2d");
-    const myChart = new Chart(ctx, {
+    // var ctx = this.$_Chart("myChart2").getContext("2d");
+    var myChart2 = this.$_Chart(ctx, {
       type: "bar",
       data: {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -25,7 +23,7 @@ export default {
               "rgba(255, 159, 64, 0.2)",
             ],
             borderColor: [
-              "rgba(255, 99, 132, 1)",
+              "rgba(255,99,132,1)",
               "rgba(54, 162, 235, 1)",
               "rgba(255, 206, 86, 1)",
               "rgba(75, 192, 192, 1)",
@@ -38,13 +36,16 @@ export default {
       },
       options: {
         scales: {
-          y: {
-            beginAtZero: true,
-          },
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
         },
       },
     });
-    console.log(myChart);
   },
 };
 </script>

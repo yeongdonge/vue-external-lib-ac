@@ -7,10 +7,9 @@
 </template>
 
 <script>
-import {Chart, registerables}  from 'chart.js';
+import {Chart}  from 'chart.js';
 import BarChart from './components/BarChart.vue';
 import LineChart from './components/LineChart.vue';
-Chart.register(...registerables);
 export default {
   components: {
     BarChart,

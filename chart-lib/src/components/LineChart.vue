@@ -1,34 +1,40 @@
 <template>
-  <canvas id="myChart2"></canvas>
+  <canvas ref="lineChart" id="myChart"></canvas>
 </template>
 
 
 <script>
-import { Chart, registerables } from "chart.js";
-Chart.register(...registerables);
 export default {
   mounted() {
-    const labels = ["January", "February", "March", "April", "May", "June"];
-
-    const data = {
-      labels: labels,
-      datasets: [
-        {
-          label: "My First dataset",
-          backgroundColor: "rgb(255, 99, 132)",
-          borderColor: "rgb(255, 99, 132)",
-          data: [0, 10, 5, 2, 20, 30, 45],
-        },
-      ],
-    };
-
-    const config = {
+    // var ctx = this.$_Chart("myChart").getContext("2d");
+    var chart = this.$_Chart(ctx, {
+      // The type of chart we want to create
       type: "line",
-      data: data,
+
+      // The data for our dataset
+      data: {
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+        ],
+        datasets: [
+          {
+            label: "My First dataset",
+            backgroundColor: "rgb(255, 99, 132)",
+            borderColor: "rgb(255, 99, 132)",
+            data: [0, 10, 5, 2, 20, 30, 45],
+          },
+        ],
+      },
+
+      // Configuration options go here
       options: {},
-    };
-    const myChart2 = new Chart(document.getElementById("myChart2"), config);
-    console.log(myChart2);
+    });
   },
 };
 </script>
